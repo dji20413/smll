@@ -1,0 +1,28 @@
+extends ../layout
+block content
+
+
+	#content-main
+		h1 Package List
+			span(style="margin-left: 12px; font-size: 12px;")
+				a(href="/vendor/package/new") add new package 
+
+		table.table.smll-thm-list
+			- each p in packages
+				tr
+					td
+						a(href="/vendor/package/#{p.id}")= p.id
+					td
+						img.img25(src="/img/package/#{p.picture}")
+					td= p.name
+					td= p.language
+					td= p.level
+					td= p.created_at.toDateString()
+
+	#content-sidebar
+		h1 #{user.name}
+
+
+	.clearfix
+
+

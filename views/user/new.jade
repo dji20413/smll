@@ -1,0 +1,34 @@
+extends ../layout
+block content
+
+	#content-main
+		h1	Sign Up
+		hr
+
+		form(action="/user", method="POST")
+			fieldset
+
+				label E-mail	
+				input(type="text", name="email", placeholder="E-mail")
+				span.help-block You will receive confirm mail	
+
+				label	Password 
+				input(type="password", name="password")
+				
+				label Name 
+				input(type="text", name="name", placeholder="Your name")
+
+				hr
+
+				button.btn.btn-primary(type="submit") Submit
+
+	#content-sidebar
+		h1 Help
+		p hello
+
+		hr
+
+		h1 Hello
+		p hello world
+
+	.clearfix

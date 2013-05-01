@@ -1,0 +1,69 @@
+extends ../layout
+block content
+
+	#content-main
+
+		h1 Connections 
+			span(style="margin-left: 12px; font-size: 12px;")
+				a(href="/device/new") add new device
+
+		.connection-list	
+			- each d in devices
+				hr
+				.item	
+					.box.pull-left
+						.left.pull-left
+							img.img75.img-polaroid(src="/img/model/#{d.model}.jpg")
+						.right.pull-left
+							h1(style="padding:0px;")= d.name
+							p at #{d.where}
+							p Lat: #{d.lat} Lon : #{d.lon}
+							p	
+								a(href="/device/#{d.id}") view
+						.clearfix
+
+					.mid.pull-left
+						img.img50(src="/img/connect.jpg")
+
+					.box.pull-left
+						.left
+							- if( d.package )
+								img.img75.img-polaroid(src="/img/empty.jpg")
+							- else 
+								img.img75.img-polaroid(src="/img/empty.jpg")
+						.right
+							- if( d.package )
+								h1= d.package.name 
+								p #{d.package.author.name}
+								p #{d.package.level} #{d.package.language} 
+								p
+									span
+										a(href="/package/#{d.package.id}") view 
+									span
+										a.connection-remove(href="/connection/#{d.id}") remove 
+							- else
+								a(href="/shop") Package Shop 
+						.clearfix
+
+					.clearfix
+
+	#content-sidebar	
+
+		.profile
+			.bio
+				h3 #{user.name}
+				p 3 device, 3 pakcages
+				p
+					a(href="/user/#{user.id}/edit") Edit Account Info. 
+		hr
+
+		p
+			a(href="/user-packages") Package that you bought 
+
+
+
+	.clearfix
+
+
+	
+	

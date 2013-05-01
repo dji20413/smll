@@ -1,0 +1,68 @@
+extends ../../layout
+block content
+
+	#content-main		
+
+		h1 #{package.name}
+		table.smll-detail.pull-left.table
+			tr
+				th Author 
+				td= package.author.name
+			tr
+				th Language 
+				td= package.language 
+			tr
+				th Level 
+				td= package.level
+			tr
+				th Created At 
+				td= package.created_at.toDateString()
+
+		img.img75.img-polaroid.pull-right(src="/img/package/#{package.picture}")
+		.clearfix
+
+		hr
+
+		h2 Description
+		p #{package.desc}
+
+		hr
+
+		h2 Reviews 
+		.review-list
+			.review-item
+				h1 good
+				p  hello
+			.review-item
+				h1 good
+				p  hello
+			.review-item
+				h1 good
+				p  hello
+
+		hr
+
+		h2 Speeches
+		.speech-list
+			table.table
+				th Scripts
+				th Listen 
+				- each sp in speeches
+					tr
+						td= sp.script
+						td 
+							a(href="#{sp.file}") Play 
+		hr
+		h2 About Author
+		p this author write from asdfa blar blar 
+
+
+	#content-sidebar
+		h1= package.author.name
+
+		hr
+		
+		h1= package.level 
+
+
+	.clearfix

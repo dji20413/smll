@@ -1,0 +1,23 @@
+extends ../../layout
+block content
+
+	h2 Users 
+
+	h3 Users 
+	table.table
+		tr
+			th No. 
+			th Name
+			th E-mail 
+
+		- each u in users 
+			tr
+				td= u.id
+				td= u.name
+				td= u.email
+
+	
+
+
+	
+	

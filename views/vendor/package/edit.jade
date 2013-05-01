@@ -1,0 +1,39 @@
+extends ../../layout
+block content
+
+
+	#content-main
+		h1 Edit Package 
+			span(style="margin-left: 12px; font-size: 12px;")
+				a.package-remove(href="/vendor/package/#{package.id}") remove this package 
+		hr
+
+		form#package-update(action="/vendor/package/#{package.id}", method="post")
+			fieldset
+				input(type="hidden", name="_method", value="put")
+
+				label Name 
+				input(type="text", name="name", value="#{package.name}")
+				
+				label Language 
+				input(type="text", name="language", value="#{package.language}")
+
+				label Level 
+				input(type="text", name="level", value="#{package.level}")
+				
+				label Description 
+				textarea(name="desc", style="width:400px; height:100px;")= package.desc
+
+				label Picture 
+				input(type="file", name="file", style="width:100%;")
+
+				.errmsg.alert.alert-error
+				.msg.alert.alert-success
+				hr
+
+				button.btn.btn-primary(type="submit") Update 
+	#content-sidebar
+		h1 Help 
+
+	.clearfix
+		

@@ -1,0 +1,51 @@
+extends ../../layout
+block content
+	#content-main		
+		h1 #{package.name}
+		table.smll-detail.pull-left.table
+			tr
+				th Author
+				td= package.author.name
+			tr
+				th Language
+				td= package.language
+			tr
+				th Level
+				td= package.level
+		img.img75.img-polaroid.pull-right(src="/img/package/#{package.picture}")
+		.clearfix
+
+		p
+			a(href="/vendor/package/#{package.id}/edit") Edit
+		p= package.desc
+
+		.clearfix
+
+		hr
+
+		h2 Speeches
+			span(style="margin-left: 12px; font-size: 12px;")
+				a(href="/vendor/package/#{package.id}/speech/new") add new speech 
+			
+		.speech-list
+			table.table
+				th # 
+				th Scripts
+				th Listen 
+				- each sp in speeches
+					tr
+						td
+							a(href="/vendor/package/#{package.id}/speech/#{sp.id}/edit")=  sp.id
+						td= sp.script
+						td 
+							button.sm2-play(path="/speech/#{package.id}/#{sp.file}") Play 
+
+	#content-sidebar
+		h1= package.author.name
+
+		hr
+		
+		h1= package.level 
+
+
+	.clearfix

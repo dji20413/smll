@@ -1,0 +1,42 @@
+extends ../../layout
+block content
+
+	#content-main
+		h1 New Package 
+		hr
+
+		form#package-new(action="/vendor/package", method="post")
+			fieldset
+				
+				label Name 
+				input(type="text", name="name", value="package")
+				
+				label Language 
+				input(type="text", name="language", value="English")
+
+				label Level 
+				input(type="text", name="level", value="Level")
+
+				label Description 
+				textarea(name="desc", value="good package", style="width:400px; height: 100px;")
+				
+				label Picture 
+				input(type="file", name="file", style="width:100%;")
+
+				.errmsg.alert.alert-error
+
+				hr
+
+				button.btn.btn-primary(type="submit") Submit
+
+	#content-sidebar
+
+		h4 Create new Pakcage
+		p create new package 
+		hr
+		h4 Create new Pakcage
+		hr
+
+
+	.clearfix
+

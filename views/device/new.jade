@@ -1,0 +1,50 @@
+extends ../layout
+block content
+
+
+	#content-main
+		h1 New Device
+		hr
+
+		form#device-new(action="/device", method="post")
+			fieldset
+
+				label Model	
+				select(name="model") 
+					- each m, i in enums.model
+						option(value="#{i+1}")= m 
+
+				label Serial 
+				input(type="text", name="serial", value="serial")
+
+				label Name	
+				input(type="text", name="name", value="Name")
+				
+				label Where 
+				input(type="text", name="where", value="Where")
+				
+				label Latitude 
+				input(type="text", name="lat", value="38.0")
+				
+				label Longitude 
+				input(type="text", name="lon", value="127.0")
+
+				hr
+
+				button.btn.btn-primary(type="submit") Submit
+	#content-sidebar
+		h1 Device?
+		p "Device" means a speaker enabled device that connected to the internet.
+
+		hr
+
+		h1 Promotion
+		p Currently, There is only one device available. "Arduino" which is a open hardware platform.
+
+		hr
+
+		h1 Help?
+		p If you have any question to fill this form, contact us immidiatly.
+
+
+	.clearfix

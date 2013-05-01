@@ -1,0 +1,31 @@
+extends ../layout
+block content
+
+	#content-main
+
+		h1 Package Shop 
+
+		.package-list
+			- each p in packages
+				hr
+				.item
+					.left
+						img.img75.img-polaroid(src="/img/empty.jpg")
+					.right
+						h4= p.name 	
+							span(style="font-size:11px;color:#888;") &nbsp; by &nbsp; 
+							span(style="font-size:13px;")= p.author.name 
+						p			
+							span= p.language
+							span &nbsp; / &nbsp;
+							span= p.level
+						p 562 reviews, 7.9 GOOD 	
+						p.pull-left
+							a(href="/package/#{p.id}") more...
+					.clearfix
+
+	#content-sidebar
+
+		h4 What is Package?	
+
+	.clearfix

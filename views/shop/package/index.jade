@@ -1,0 +1,43 @@
+extends ../../layout
+block content
+
+	#content-main
+
+		h1 Package Shop 
+
+		.package-list
+			- each p in packages
+				hr
+				.item
+					.left
+						img.img75.img-polaroid(src="/img/package/#{p.picture}")
+					.right
+						h4= p.name 	
+							span(style="font-size:11px;color:#888;") &nbsp; by &nbsp; 
+							span(style="font-size:13px;")= p.author.name 
+						p			
+							span= p.language
+							span &nbsp; / &nbsp;
+							span= p.level
+						p 562 reviews, 7.9 GOOD 	
+						p.pull-left
+							a(href="/shop/package/#{p.id}") view 
+					.clearfix
+
+	#content-sidebar
+
+		h4 What is Package?	
+		p Package means set of speeches.
+
+		hr
+		h4 Level 
+		p Level means number of words and difficulty  
+		ul
+			li Basic
+			li Intermediate
+			li Advanced 
+
+		hr
+		h4 Language 
+
+	.clearfix

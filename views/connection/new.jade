@@ -1,0 +1,32 @@
+extends ../layout
+block content
+
+	#content-main
+	
+		h1 Connect 
+		hr
+
+		p Connect the package to your device.
+		form#connection-new(method="post", action="/connection")
+			fieldset
+				table
+					tr
+						td(style="width:100px;")
+							label Package 
+							input(type="text", READONLY, value="#{package.name}")
+							input(type="hidden", name="package_id", value="#{package.id}")
+						td(style="width:100px;")
+							label Device 
+							select(name="device_id")
+								- each d in devices
+									option(value="#{d.id}")= d.name
+				hr
+
+				button.btn.btn-primary(type="submit") Submit
+
+	#content-sidebar
+		h1 Connection?
+		p blarblar
+
+
+	.clearfix

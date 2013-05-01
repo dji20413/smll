@@ -1,0 +1,30 @@
+extends ../layout
+block content
+
+	#content-main
+		h1 Sign In 
+			span(style="margin-left: 12px; font-size: 12px;") No account?
+			span(style="margin-left: 12px; font-size: 12px;")
+				a(href="/signup") Sign Up 
+		hr
+		form#session-new(action="/session", method="post")
+			fieldset
+				label E-mail 	
+				input(type="text", name="email", value="vendor")
+
+				label Password	
+				input(type="password", name="password", value="asdf")
+
+				p
+					a(href="/user/resetpw") Forgot password?
+
+				.errmsg.alert.alert-error
+				.msg.alert.alert-error
+				hr
+				button.btn.btn-primary(type="submit") Submit
+	#content-sidebar
+		h1 Help
+		p Hello
+
+	.clearfix
+

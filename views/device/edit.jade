@@ -1,0 +1,59 @@
+extends ../layout
+block content
+
+
+	#content-main
+		h1 Edit Device
+		span
+			a.pull-right.btn.btn-danger.btn-small.device-remove(href="#", device_id="#{device.id}") Remove
+		.clearfix
+
+		hr
+
+
+		form#device-new(action="/device/#{device.id}", method="post")
+			fieldset
+				input(type="hidden", name="_method", value="put")
+
+				label Model	
+				select(name="model") 
+					- each m, i in enums.model
+						- if( device.model == i )
+							option(value="#{i+1}", selected)= m 
+						- else 
+							option(value="#{i+1}")= m 
+
+				label Serial 
+				input(type="text", name="serial", value="#{device.serial}")
+
+				label Name	
+				input(type="text", name="name", value="#{device.name}")
+				
+				label Where 
+				input(type="text", name="where", value="#{device.where}")
+				
+				label Latitude 
+				input(type="text", name="lat", value="#{device.lat}")
+				
+				label Longitude 
+				input(type="text", name="lon", value="#{device.lon}")
+
+				hr
+
+				button.btn.btn-primary(type="submit") Save
+	#content-sidebar
+		h1 Device?
+		p "Device" means a speaker enabled device that connected to the internet.
+
+		hr
+
+		h1 Promotion
+		p Currently, There is only one device available. "Arduino" which is a open hardware platform.
+
+		hr
+
+		h1 Help?
+		p If you have any question to fill this form, contact us immidiatly.
+
+
+	.clearfix	

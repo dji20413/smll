@@ -1,0 +1,43 @@
+extends ../layout
+block content
+	#content-main		
+		h1 #{package.name}
+		table.smll-detail.pull-left.table
+			tr
+				th Author 
+				td= package.author.name
+			tr
+				th Language 
+				td= package.language 
+			tr
+				th Level 
+				td= package.level
+			tr
+				th Created At 
+				td= package.created_at.toDateString()
+
+		img.img75.img-polaroid.pull-right(src="/img/package/#{package.picture}")
+		.clearfix
+
+		hr
+
+		h2 Description
+		p #{package.desc}
+
+		hr
+
+		h2 Speeches
+		.speech-list
+			table.table
+				th Scripts
+				th Listen 
+				- each sp in speeches
+					tr
+						td
+							a(href="/vendor/package/#{package.id}/speech/#{sp.id}/edit")=  sp.id
+						td= sp.script
+						td 
+							a.sm2-play(href="#{sp.file}") Play 
+
+	#content-sidebar
+	.clearfix

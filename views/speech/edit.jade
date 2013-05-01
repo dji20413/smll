@@ -1,0 +1,95 @@
+extends ../layout
+block content
+
+	#content-main
+
+		h1 Edit Speech 
+			span(style="margin-left: 12px; font-size: 12px;")
+				a.speech-remove(href="/speech/#{speech.id}") remove this speech 
+
+		form#speech-update(action="/vendor/package/#{package.id}/speech/#{speech.id}", enctype="multipart/form-data", method="post") 
+			fieldset
+				input(type="hidden", name="_method", value="put")
+
+				table.table
+					tr
+						td(colspan=3)
+							h2 #{package.name}
+							input(type="hidden", name="package_id", value="#{package.id}")
+					tr
+						td
+							p Time 
+							select(name="time_id") 
+								option(value="0") none
+								- each t in times 
+									- if ( t.id == speech.time_id ) 
+										option(value="#{t.id}", selected)= t.name
+									- else
+										option(value="#{t.id}")= t.name
+						td
+							p Weekday 
+							select(name="weekday_id")
+								option(value="0") none
+								- each wd in weekdays
+									- if ( wd.id == speech.weekday_id ) 
+										option(value="#{wd.id}", selected)= wd.name 
+									- else 
+										option(value="#{wd.id}")= wd.name 
+
+						td
+							p Weather 
+							select(name="weather_id")
+								option(value="0") none
+								- each w in weathers
+									- if ( w.id == speech.weather_id ) 
+										option(value="#{w.id}", selected)= w.name 
+									- else
+										option(value="#{w.id}")= w.name 
+
+					tr
+						td
+							p Feeling 
+							select(name="feeling_id")
+								option(value="0") none
+								- each f in feelings
+									- if ( f.id == speech.feeling_id ) 
+										option(value="#{f.id}", selected)= f.name 
+									- else
+										option(value="#{f.id}")= f.name 
+
+						td
+							p Month
+							select(name="month")
+								option(value="0") none
+								- each m in months 
+									- if ( m == speech.month ) 
+										option(value="#{m}", selected)= m 
+									- else 
+										option(value="#{m}")= m 
+	
+						td	
+							p Date 
+							select(name="date")
+								option(value="0") none
+								- each d in dates 
+									- if ( d == speech.date) 
+										option(value="#{d}", selected)= d 
+									- else
+										option(value="#{d}")= d 
+					tr	
+						td(colspan=3)
+							p Script 
+							input(type="text", name="script", value="#{speech.script}")
+
+					tr
+						td(colspan=3)
+							p File 
+							input(type="file", name="file", value="#{speech.file}")
+				.errmsg.alert.alert-error	
+				.msg.alert.alert-success
+				hr
+				button.btn.btn-primary(type="submit") Update 
+	#content-sidebar
+		h1 
+	
+	.clearfix

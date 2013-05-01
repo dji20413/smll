@@ -1,0 +1,27 @@
+extends ../layout
+block content
+
+	h1 Edit 
+
+	form#package-update(method="POST", action="/vendor/package/#{package.id}")
+		fieldset
+
+			legend New Package 
+			input(type="hidden", name="_method", value="put")
+
+			label Name 
+			input(type="text", name="name", value="#{package.name}")
+
+			label Description 
+			input(type="text", name="desc", value="#{package.desc}")
+			
+			label Language 
+			input(type="text", name="language", value="#{package.language}")
+
+			label Level 
+			input(type="text", name="level", value="#{package.level}")
+
+			hr
+
+			button.btn.btn-primary(type="submit") Update 
+

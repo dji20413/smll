@@ -1,0 +1,72 @@
+extends ../layout
+block content
+
+	#content-main	
+
+		h1 New Speech 
+		
+		form#speech-new(action="/speech", enctype="multipart/form-data", method="post") 
+			fieldset
+				table.table
+					tr
+						td(colspan=3)
+							h2 #{package.name}
+							input(type="hidden", name="package_id", value="#{package.id}")
+					tr
+						td
+							p Time 
+							select(name="time_id") 
+								option(value="0") ----
+								- each t in times 
+									option(value="#{t.id}")= t.name
+					
+						td
+							p Weekday 
+							select(name="weekday_id")
+								option(value="0") ----
+								- each wd in weekdays
+									option(value="#{wd.id}")= wd.name 
+
+						td
+							p Weather 
+							select(name="weather_id")
+								option(value="0") ----
+								- each w in weathers
+									option(value="#{w.id}")= w.name 
+
+					tr
+						td
+							p Feeling 
+							select(name="feeling_id")
+								option(value="0") ----
+								- each f in feelings
+									option(value="#{f.id}")= f.name 
+
+						td
+							p Month
+							select(name="month")
+								option(value="0") ----
+								- each m, i in enums.month 
+									option(value="#{m}")= m 
+			
+						td
+							p Date 
+							select(name="date")
+								option(value="0") ----
+								- each d in enums.date 
+									option(value="#{d}")= d 
+
+					tr
+						td(colspan=3)
+							p Script 
+							input(type="text", name="script", value="Hello", style="width:100%;")
+					tr
+						td(colspan=3)
+							p File 
+							input(type="file", name="file", style="width:100%;")
+			.errmsg.alert.alert-error	
+			hr
+			button.btn.btn-primary(type="submit") Submit
+	#content-sidebar
+		h1 Help
+	.clearfix

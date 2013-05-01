@@ -1,0 +1,108 @@
+doctype 5
+html
+	head
+		title smll 0.1.0 
+		meta(charset="UTF-8")
+		link(rel="stylesheet", href="/bootstrap/css/bootstrap.min.css")
+		link(rel="stylesheet", href="/css/style.css")
+		script(src="/js/jquery-1.9.1.min.js")
+		script(src="/js/jquery.form.js")
+		script(src="/bootstrap/js/bootstrap.min.js")
+		script(src="/js/forms.js")
+		script(src="/sm2/script/soundmanager2-nodebug-jsmin.js")
+
+		script
+
+			$(function() {
+
+				soundManager.setup({
+					url : '/sm2/swf/',
+				});
+
+				$('.sm2-play').click( function(e) {
+					e.preventDefault();
+					soundManager.createSound({
+						id  : 'voice',
+						url : $(this).attr('path'),
+						autoLoad : true,
+						autoPlay : true,
+						onload: function() {
+							console.log('loaded');
+						},
+						volume : 50
+					});
+				});
+
+			});
+	body
+
+		#modal-from-dom.modal.hide.fade
+			.modal-header
+				h3 Delete
+			.modal-body
+				p You are about to delete one track url, this procedure is irreversible.
+			.modal-footer
+				a.btn.btn-danger(href="") Yes
+				a.btn.btn-secondary(href="javascript:$('#modal-from-dom').modal('hide')") No
+
+		header
+			.navbar.navbar-inverse
+				.navbar-inner
+					a.brand(href="/") CLAN
+					ul.nav(role="navigation")
+						- if ( user ) 
+							li
+								a(href="/shop") Package Shop 
+					ul.nav.pull-right
+						li.dropdown
+							- if ( user )
+								a.dropdown-toggle(data-toggle="dropdown", href="#")
+									i.icon-user.icon-white
+									span &nbsp;#{user.name}&nbsp;
+									b.caret
+								ul.dropdown-menu(role="menu", aria-labelledby="dLabel") 
+									li
+										a(href="/") My Page 
+									li
+										hr
+									- if ( user.name == "vendor" )
+										li
+											a(href="/vendor/package/new") Dashboard 
+										li
+											a(href="/vendor/package/new") Create New Package 
+									li
+										hr
+									li
+										a(href="/signout") Sign Out 
+							- else 
+								a(href="/signin") Sign In 
+
+		#modal-yesno.modal.hide.fade
+			.modal-header
+			.modal-body
+			.modal-footer
+				a.btn(href="") NO 
+				a.btn.btn-primary(href="") YES 
+
+		#content	
+
+			- if ( flash.message )
+				#notice.alert.alert-success
+					button.close(type="button", data-dismiss="alert") &times;	
+					span= flash.message 
+
+			block content
+
+
+		footer
+			hr
+
+			ul
+				li 2013 coderhy.me
+				li 
+					a(href="/about") About
+				li 
+					a(href="/terms") Terms 
+				li 
+					a(href="/privacy") Privacy 
+

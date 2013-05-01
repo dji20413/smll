@@ -1,0 +1,26 @@
+extends ../layout
+block content
+
+	h1 New Package 
+
+	form#package-new
+		fieldset
+
+			legend New Package 
+
+			label Name 
+			input(type="text", name="name", value="package")
+
+			label Description 
+			input(type="text", name="desc", value="good package")
+			
+			label Language 
+			input(type="text", name="language", value="English")
+
+			label Level 
+			input(type="text", name="level", value="Level")
+
+			hr
+
+			button.btn.btn-primary(type="submit") Submit
+

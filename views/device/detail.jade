@@ -1,0 +1,42 @@
+extends ../layout
+block content
+
+	#content-main
+
+		h1 #{device.name}
+		table.smll-detail.pull-left.table
+			tr
+				th Serial 
+				td= device.serial 
+			tr
+				th Location 
+				td= device.where 
+			tr
+				th Geolocation 
+				td Lat: #{device.lat}, Lon: #{device.lon}
+			tr
+				th Test 
+				td
+					a(href="/device/#{device.serial}/ctx") click 
+		img.img75.img-polaroid.pull-right(src="/img/model/#{device.model}.jpg")
+		.clearfix
+
+
+	#content-sidebar
+		h1 Device?
+		p "Device" means a speaker enabled device that connected to the internet.
+
+		hr
+
+		h1 Promotion
+		p Currently, There is only one device available. "Arduino" which is a open hardware platform.
+
+		hr
+
+		h1 Help?
+		p If you have any question to fill this form, contact us immidiatly.
+	
+	.clearfix
+
+
+	

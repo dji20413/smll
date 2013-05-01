@@ -1,0 +1,25 @@
+extends ../layout
+block content
+
+	h1 User Edit	
+
+	form#user-update(action="/user/#{user.id}", method="POST")
+		fieldset
+			input(type="hidden", name="_method", value="put")
+
+			label E-mail	
+			input(type="text", name="email", value="#{user.email}")
+			span.help-block You will receive confirm mail	
+
+			label	Password 
+			input(type="password", name="password", placeholder="Enter New Password")
+			
+			label Name 
+			input(type="text", name="name", value="#{user.name}")
+
+			.errmsg
+
+			hr
+
+			button.btn.btn-primary(type="submit") Update 
+

@@ -1,0 +1,23 @@
+extends ../../layout
+block content
+
+	h1 Package List 
+	table.table
+		tr
+			th Name 
+			th Author 
+			th Description 
+			th Language 
+			th Level 
+			th Created At 
+		- each p in packages
+			tr
+				td
+					a(href="/vendor/package/#{p.id}")=p.name
+				td= p.author.name 
+				td= p.desc
+				td= p.language
+				td= p.level
+				td= p.created_at 
+
+	

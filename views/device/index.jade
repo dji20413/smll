@@ -1,0 +1,23 @@
+extends ../layout
+block content
+
+	h2 My Device List 
+
+	h3 Device
+	table.table
+		tr
+			th Name
+			th Serial
+			th Package
+
+		- each d in devices
+			tr
+				td= d.name
+				td= d.serial
+				td= d.package
+
+	
+
+
+	
+	
