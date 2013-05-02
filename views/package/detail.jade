@@ -2,6 +2,7 @@ extends ../layout
 block content
 	#content-main		
 		h1 #{package.name}
+
 		table.smll-detail.pull-left.table
 			tr
 				th Author 
@@ -21,21 +22,24 @@ block content
 
 		hr
 
-		h2 Description
-		p #{package.desc}
+		!{package.desc}
 
 		hr
 
 		h2 Speeches
 		.speech-list
 			table.table
+				th #
 				th Scripts
+				th Score
 				th Listen 
+				
 				- each sp in speeches
 					tr
 						td
 							a(href="/vendor/package/#{package.id}/speech/#{sp.id}/edit")=  sp.id
 						td= sp.script
+						td= sp.score
 						td 
 							a.sm2-play(href="#{sp.file}") Play 
 

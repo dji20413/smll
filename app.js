@@ -13,11 +13,13 @@ var express = require('express')
 	, uuid = require("node-uuid")
 	, flashify = require("flashify");
 
+// global 
 fs = require("fs");
 path = require('path');
 enums = require("./enums");
 request = require("request");
 async = require("async");
+md = require("node-markdown").Markdown;
 
 // create reusable transport method (opens pool of SMTP connections)
 var smtpTransport = nodemailer.createTransport("SMTP",{

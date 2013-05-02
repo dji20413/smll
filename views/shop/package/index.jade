@@ -16,10 +16,8 @@ block content
 							span(style="font-size:11px;color:#888;") &nbsp; by &nbsp; 
 							span(style="font-size:13px;")= p.author.name 
 						p			
-							span= p.language
-							span &nbsp; / &nbsp;
-							span= p.level
-						p 562 reviews, 7.9 GOOD 	
+							span.smll-block= p.language
+							span.smll-block= p.level
 						p.pull-left
 							a(href="/shop/package/#{p.id}") view 
 					.clearfix

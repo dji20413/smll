@@ -121,16 +121,56 @@ module.exports = {
 				req.body.file = guid; 
 			} 
 
-			for (var attr in req.body) {
-				 speech[attr] = req.body[attr]; 
-			}
-			speech.save( function(err) {
+			
+			// re-calc score
+			async.series([
+				function(cb) {
+					req.models.time.get( req.body.time_id, function(err, time) { 
+						console.log(time);
+						if( !err && time ) cb(null, time.score);
+						else cb(null, 0);
+				})},
+				function(cb) {
+					req.models.weekday.get( req.body.weekday_id, function(err, weekday) { 
+						if( !err && weekday ) cb(null, weekday.score);
+						else cb(null, 0);
+				})},
+				function(cb) {
+					req.models.feeling.get( req.body.time_id, function(err, feeling) { 
+						if( !err && feeling ) cb(null, feeling.score);
+						else cb(null, 0);
+				})},
+				function(cb) {
+					req.models.weather.get( req.body.weather_id, function(err, weather) { 
+						if( !err && weather ) cb(err, weather.score);
+						else cb(null, 0);
+				})}
+			], function(err, result) {
+
 				if( err ) {
-					res.send("Save error", 400);	
-				} else {
-					res.send("Updated Successfully", 201);	
+					res.send("Save error", 400);
 				}
+
+				req.body.score = result[0] + result[1] + result[2] + result[3];
+				
+				for (var attr in req.body) {
+					speech[attr] = req.body[attr]; 
+				}
+
+				speech.save( function(err) {
+					if( err ) {
+						res.send("Save error", 400);	
+					} else {
+						req.flash('Update Successfully');
+						res.header('Location', '/vendor/package/'+req.body.package_id)
+						res.send("Updated Successfully", 201);	
+					}
+				});
+
 			});
+
+
+			
 
 		});
 

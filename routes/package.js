@@ -1,3 +1,4 @@
+
 module.exports = {
 	"index" : function(req, res) {
 		req.models.package.find({}, function(err, packages) {
@@ -17,6 +18,9 @@ module.exports = {
 				if( err || package.length == 0 ) {
 					res.send(404);
 				} else {
+
+					// description must be parsed as a markdown
+					package.desc = md(package.desc, true);
 
 					req.models.speech.find({package_id: package.id}, function(err, speeches) {
 						res.render('package/detail', {
@@ -83,6 +87,10 @@ module.exports = {
 					if( err || package.length == 0 ) {
 						res.send(404);
 					} else {
+
+						// description must be parsed as a markdown
+						package.desc = md(package.desc, true);
+						
 						res.render('vendor/package/detail', {
 							package : package,
 							speeches: speeches
@@ -132,6 +140,7 @@ module.exports = {
 				// save
 				package.save( function(err) {
 					res.header('Location', '/vendor/package/' + package.id);
+					req.flash("Updated Successfully");
 					res.send("Updated Successfully", 201);	
 				});
 

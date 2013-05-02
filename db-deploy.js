@@ -14,10 +14,10 @@ orm.connect("mysql://root:audghk02@127.0.0.1/smll", function (err, db) {
 
 	console.log("mysql ok");
 	
-	var User = db.define('user', mot.user.fields, { autoFetch : true });
+	var User    = db.define('user', mot.user.fields, { autoFetch : true });
 	var Package = db.define('package', mot.package.fields, { autoFetch : true });
-	var Speech = db.define('speech', mot.speech.fields, { autoFetch : true });
-	var Device = db.define('device', mot.device.fields, { autoFetch : true });
+	var Speech  = db.define('speech', mot.speech.fields, { autoFetch : true });
+	var Device  = db.define('device', mot.device.fields, { autoFetch : true });
 
 	var Time    = db.define('time', mot.time.fields, { autoFetch : true });
 	var Weekday = db.define('weekday', mot.weekday.fields, { autoFetch : true });

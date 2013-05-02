@@ -30,6 +30,10 @@ ul li hr {
   border: 1px solid #e0e0e0;
   margin: 5px 15px;
 }
+span.smll-block {
+  margin-right: 5px;
+  font-size: 13px;
+}
 a {
   color: #4b8ead;
 }

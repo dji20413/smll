@@ -138,8 +138,7 @@ $(function() {
 	var formSpeechUpdate = $("form#speech-update");
 	formSpeechUpdate.ajaxForm({
 		"success" : function(respText, statusText, xhr) {
-			formSpeechUpdate.find('.errmsg').hide();
-			formSpeechUpdate.find('.msg').html(xhr.responseText).show();
+			window.location.replace( xhr.getResponseHeader('Location') );
 		}, 
 		"error"   : function(xhr, err) {
 			formSpeechUpdate.find('.errmsg').html(xhr.responseText).show();
