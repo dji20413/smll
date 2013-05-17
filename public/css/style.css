@@ -114,7 +114,7 @@ header {
   width: 550px;
 }
 #content #content-main .connection-list .item .box {
-  width: 250px;
+  width: 220px;
 }
 #content #content-main .connection-list .item .box .left {
   float: left;
@@ -130,14 +130,6 @@ header {
 #content #content-main .connection-list .item .box .right p {
   font-size: 12.8px;
   line-height: 100%;
-}
-#content #content-main .connection-list .item .mid {
-  width: 50px;
-  background-image: url('/public/img/connection.jpg');
-}
-#content #content-main .connection-list .item .mid img {
-  width: 40px;
-  height: 40px;
 }
 #content #content-main .package-detail {
   width: 550px;
